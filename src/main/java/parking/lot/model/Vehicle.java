@@ -8,13 +8,13 @@ public class Vehicle extends BaseModel{
 
     private VehicleType vehicleType;
 
-    private Owner owner;
+    private String owner;
 
-    public Owner getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 

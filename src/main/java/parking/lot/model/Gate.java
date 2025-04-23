@@ -3,7 +3,7 @@ package parking.lot.model;
 import parking.lot.enums.GateStatus;
 import parking.lot.enums.GateType;
 
-public class Gate extends BaseModel{
+public class Gate extends BaseModel {
 
     private int gateNumber;
 
@@ -12,6 +12,8 @@ public class Gate extends BaseModel{
     private GateStatus gateStatus;
 
     private Operator operator;
+
+    private ParkingFloor parkingFloor;
 
     public int getGateNumber() {
         return gateNumber;
@@ -43,6 +45,14 @@ public class Gate extends BaseModel{
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+    }
+
+    public ParkingFloor getParkingFloor() {
+        return parkingFloor;
+    }
+
+    public void setParkingFloor(ParkingFloor parkingFloor) {
+        this.parkingFloor = parkingFloor;
     }
 }
 

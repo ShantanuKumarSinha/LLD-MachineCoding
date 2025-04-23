@@ -1,6 +1,7 @@
 package parking.lot.model;
 
 import parking.lot.enums.ParkingLotStatus;
+import parking.lot.enums.SpotAssignmentStrategyType;
 import parking.lot.strategy.spot.SpotChoosingStrategy;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class ParkingLot  extends BaseModel{
 
     private ParkingLotManager parkingLotManager;
 
-    private SpotChoosingStrategy spotChoosingStrategy;
+    private SpotAssignmentStrategyType spotAssignmentStrategyType;
 
     private String address;
 
@@ -69,11 +70,11 @@ public class ParkingLot  extends BaseModel{
         this.parkinglotstatus = parkinglotstatus;
     }
 
-    public SpotChoosingStrategy getSpotChoosingStrategy() {
-        return spotChoosingStrategy;
+    public SpotAssignmentStrategyType getSpotAssignmentStrategyType() {
+        return spotAssignmentStrategyType;
     }
 
-    public void setSpotChoosingStrategy(SpotChoosingStrategy spotChoosingStrategy) {
-        this.spotChoosingStrategy = spotChoosingStrategy;
+    public void setSpotAssignmentStrategyType(SpotAssignmentStrategyType spotAssignmentStrategyType) {
+        this.spotAssignmentStrategyType = spotAssignmentStrategyType;
     }
 }
