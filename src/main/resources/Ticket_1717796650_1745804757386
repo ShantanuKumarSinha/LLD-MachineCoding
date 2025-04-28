@@ -1,9 +1,0 @@
-Ticket{
-entryTime = Mon Apr 28 07:15:57 IST 2025
-ticketNumber = 1717796650
-generatedAt = parking.lot.model.Gate@aec6354
-generatedBy = parking.lot.model.Operator@1c655221
-vehicle = parking.lot.model.Vehicle@58d25a40
-parkingSpot = parking.lot.model.ParkingSpot@1b701da1
-ticketStatus = VALID
-}

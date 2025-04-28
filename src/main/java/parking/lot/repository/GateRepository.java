@@ -17,16 +17,19 @@ public class GateRepository {
 
         // Initialize Operator
         Operator operator1 = new Operator();
+        operator1.setId(1);
         operator1.setOperatorName("Operator1");
         operator1.setAge(32);
         operator1.setEmployeeId(2345);
 
         Operator operator2 = new Operator();
+        operator2.setId(2);
         operator2.setOperatorName("Operator2");
         operator2.setAge(21);
         operator2.setEmployeeId(1234);
 
         Operator operator3 = new Operator();
+        operator3.setId(3);
         operator3.setOperatorName("Operator3");
         operator3.setAge(29);
         operator3.setEmployeeId(8733);

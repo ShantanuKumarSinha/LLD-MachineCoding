@@ -82,10 +82,12 @@ public class Ticket extends BaseModel implements Serializable {
         final StringBuilder sb = new StringBuilder("Ticket{");
         sb.append("\nentryTime = ").append(entryTime).append("\n");
         sb.append("ticketNumber = ").append(ticketNumber).append("\n");
-        sb.append("generatedAt = ").append(generatedAt).append("\n");
-        sb.append("generatedBy = ").append(generatedBy).append("\n");
-        sb.append("vehicle = ").append(vehicle).append("\n");
-        sb.append("parkingSpot = ").append(parkingSpot).append("\n");
+        sb.append("generatedAt = ").append(generatedAt.getParkingFloor().getFloorNumber())
+                .append("Floor and Gate ").append(generatedAt.getGateNumber()).append("\n");
+        sb.append("generatedBy = ").append(generatedBy.getId()).append("\n");
+        sb.append("vehicle = ").append(vehicle.getVehicleNumber()).append("\n");
+        sb.append("parkingSpotId = ").append(parkingSpot.getSpotId()).append("\n");
+        sb.append("parkingSpotStatus = ").append(parkingSpot.getParkingSpotStatus()).append("\n");
         sb.append("ticketStatus = ").append(ticketStatus).append("\n");
         sb.append('}');
         return sb.toString();

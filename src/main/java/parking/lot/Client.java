@@ -54,9 +54,10 @@ public class Client {
     }
 
     private static void printTicket(Ticket ticket) throws IOException {
-        try (FileWriter fileWriter = new FileWriter("src/main/resources/Ticket_" + ticket.getTicketNumber() + "_" + ticket.getEntryTime().getTime())) {
+        var fileName = "src/main/resources/Ticket_" + ticket.getTicketNumber() + "_" + ticket.getEntryTime().getTime();
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(ticket.toString());
+            bufferedWriter.write(String.valueOf(ticket));
             bufferedWriter.flush();
         }
     }
