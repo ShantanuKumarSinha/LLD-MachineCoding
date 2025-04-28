@@ -5,30 +5,20 @@ import parking.lot.controller.TicketController;
 import parking.lot.dtos.IssueTicketRequestDTO;
 import parking.lot.dtos.IssueTicketResponseDTO;
 import parking.lot.enums.VehicleType;
+import parking.lot.model.Ticket;
 import parking.lot.repository.GateRepository;
 import parking.lot.repository.ParkingLotRepository;
 import parking.lot.repository.TicketRepository;
 import parking.lot.repository.VehicleRepository;
 import parking.lot.service.TicketService;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Client {
-    public static void main(String[] args) {
-        GateRepository gateRepository = new GateRepository();
-
-        ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
-
-        TicketRepository ticketRepository = new TicketRepository();
-
-        VehicleRepository vehicleRepository = new VehicleRepository();
-
-        //ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
-
-        TicketService ticketService = new TicketService(gateRepository,
-                vehicleRepository,
-                parkingLotRepository,
-                ticketRepository);
-
-        TicketController ticketController = new TicketController(ticketService);
+    public static void main(String[] args) throws IOException {
+        TicketController ticketController = getTicketController();
 
         IssueTicketRequestDTO issueTicketRequestDTO = new IssueTicketRequestDTO();
         issueTicketRequestDTO.setOwnerName("Shantanu");
@@ -42,5 +32,32 @@ public class Client {
 
         System.out.println(issueTicketResponseDTO.getResponseStatus());
 
+        printTicket(issueTicketResponseDTO.getTicket());
+
+    }
+
+    private static TicketController getTicketController() {
+        GateRepository gateRepository = new GateRepository();
+
+        ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
+
+        TicketRepository ticketRepository = new TicketRepository();
+
+        VehicleRepository vehicleRepository = new VehicleRepository();
+
+        TicketService ticketService = new TicketService(gateRepository,
+                vehicleRepository,
+                parkingLotRepository,
+                ticketRepository);
+
+        return new TicketController(ticketService);
+    }
+
+    private static void printTicket(Ticket ticket) throws IOException {
+        try (FileWriter fileWriter = new FileWriter("src/main/resources/Ticket_" + ticket.getTicketNumber() + "_" + ticket.getEntryTime().getTime())) {
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(ticket.toString());
+            bufferedWriter.flush();
+        }
     }
 }

@@ -24,12 +24,6 @@ public class NearestParkingChoosingStrategy implements SpotChoosingStrategy {
 
         parkingSpots = parkingSpotRepository.findAllParkingSpots();
 
-//        parkingSpots.stream().forEach(parkingSpot -> {
-//            System.out.println(parkingSpot.getVehicleType().equals(vehicleType));
-//            System.out.println(parkingSpot.getParkingFloor().getFloorNumber().equals(gate.getParkingFloor().getFloorNumber()));
-//            System.out.println(parkingSpot.getParkingSpotStatus().equals(ParkingSpotStatus.AVAILABLE));
-//        });
-
         return parkingSpots.stream().filter(parkingSpot -> parkingSpot.getVehicleType().equals(vehicleType) && parkingSpot.getParkingFloor().getFloorNumber().equals(gate.getParkingFloor().getFloorNumber()) && parkingSpot.getParkingSpotStatus().equals(ParkingSpotStatus.AVAILABLE)).findFirst().orElseThrow(ParkingSpotFullException::new);
     }
 

@@ -2,11 +2,12 @@ package parking.lot.model;
 
 import parking.lot.enums.TicketStatus;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Ticket extends BaseModel{
+public class Ticket extends BaseModel implements Serializable {
 
-    private String ticketNumber;
+    private Integer ticketNumber;
 
     private Gate generatedAt;
 
@@ -52,11 +53,11 @@ public class Ticket extends BaseModel{
         this.parkingSpot = parkingSpot;
     }
 
-    public String getTicketNumber() {
+    public Integer getTicketNumber() {
         return ticketNumber;
     }
 
-    public void setTicketNumber(String ticketNumber) {
+    public void setTicketNumber(Integer ticketNumber) {
         this.ticketNumber = ticketNumber;
     }
 
@@ -74,5 +75,19 @@ public class Ticket extends BaseModel{
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Ticket{");
+        sb.append("\nentryTime = ").append(entryTime).append("\n");
+        sb.append("ticketNumber = ").append(ticketNumber).append("\n");
+        sb.append("generatedAt = ").append(generatedAt).append("\n");
+        sb.append("generatedBy = ").append(generatedBy).append("\n");
+        sb.append("vehicle = ").append(vehicle).append("\n");
+        sb.append("parkingSpot = ").append(parkingSpot).append("\n");
+        sb.append("ticketStatus = ").append(ticketStatus).append("\n");
+        sb.append('}');
+        return sb.toString();
     }
 }
