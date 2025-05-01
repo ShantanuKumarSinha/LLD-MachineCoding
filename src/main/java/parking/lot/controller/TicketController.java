@@ -19,7 +19,7 @@ public class TicketController {
         IssueTicketResponseDTO issueTicketResponseDTO = new IssueTicketResponseDTO();
         try {
             var ticket = ticketService.issueTicket(issueTicketRequestDTO.getVehicleNumber(), issueTicketRequestDTO.getVehicleType(), issueTicketRequestDTO.getOwnerName(), issueTicketRequestDTO.getGateId(), issueTicketRequestDTO.getParkingLotId());
-            issueTicketResponseDTO.setTicket(ticket);
+            issueTicketResponseDTO = IssueTicketResponseDTO.from(ticket);
             issueTicketResponseDTO.setResponseStatus(SUCCESS);
         } catch (Exception e) {
             issueTicketResponseDTO.setResponseStatus(FAILURE);

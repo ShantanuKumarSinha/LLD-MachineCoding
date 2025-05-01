@@ -4,8 +4,8 @@ package parking.lot;
 import parking.lot.controller.TicketController;
 import parking.lot.dtos.IssueTicketRequestDTO;
 import parking.lot.dtos.IssueTicketResponseDTO;
+import parking.lot.dtos.ResponseStatus;
 import parking.lot.enums.VehicleType;
-import parking.lot.model.Ticket;
 import parking.lot.repository.GateRepository;
 import parking.lot.repository.ParkingLotRepository;
 import parking.lot.repository.TicketRepository;
@@ -31,8 +31,8 @@ public class Client {
         IssueTicketResponseDTO issueTicketResponseDTO = ticketController.issueTicket(issueTicketRequestDTO);
 
         System.out.println(issueTicketResponseDTO.getResponseStatus());
-
-        printTicket(issueTicketResponseDTO.getTicket());
+        if (issueTicketResponseDTO.getResponseStatus().equals(ResponseStatus.SUCCESS))
+            printTicket(issueTicketResponseDTO);
 
     }
 
@@ -53,11 +53,11 @@ public class Client {
         return new TicketController(ticketService);
     }
 
-    private static void printTicket(Ticket ticket) throws IOException {
-        var fileName = "src/main/resources/Ticket_" + ticket.getTicketNumber() + "_" + ticket.getEntryTime().getTime();
+    private static void printTicket(IssueTicketResponseDTO issueTicketResponseDTO) throws IOException {
+        var fileName = "src/main/resources/Ticket_" + issueTicketResponseDTO.getTicketNumber() + "_" + issueTicketResponseDTO.getEntryTime().getTime();
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(String.valueOf(ticket));
+            bufferedWriter.write(String.valueOf(issueTicketResponseDTO));
             bufferedWriter.flush();
         }
     }
