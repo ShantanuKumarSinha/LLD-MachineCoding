@@ -1,12 +1,10 @@
 package parking.lot.model;
 
-import parking.lot.builder.Builder;
 import parking.lot.enums.TicketStatus;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Builder
 public class Ticket extends BaseModel implements Serializable {
 
     private Integer ticketNumber;
