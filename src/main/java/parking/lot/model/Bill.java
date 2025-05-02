@@ -1,10 +1,12 @@
 package parking.lot.model;
 
+import parking.lot.builder.Builder;
 import parking.lot.enums.BillStatus;
 
 import java.util.Date;
 import java.util.List;
 
+@Builder
 public class Bill extends BaseModel{
 
     private int billNumber;

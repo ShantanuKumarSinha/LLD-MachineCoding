@@ -8,7 +8,7 @@ import javax.tools.JavaFileObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Set;
-
+//TODO
 @SupportedAnnotationTypes("Builder")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 public class BuilderProcessor extends AbstractProcessor {
@@ -17,7 +17,12 @@ public class BuilderProcessor extends AbstractProcessor {
     private Filer filer;
     private Messager messager;
 
-
+/**
+     * This method is called when the annotation processor is first created.
+     * It is used to initialize the processor and set up any resources it needs.
+     *
+     * @param processingEnv The processing environment.
+     */
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
